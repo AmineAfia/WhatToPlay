@@ -2,9 +2,10 @@ package router
 
 import (
 	"net/http"
-	"github.com/gin-gonic/gin"
+
 	"github.com/AmineAfia/WhatToPlay/server/models"
-	
+	"github.com/AmineAfia/WhatToPlay/server/qrcode"
+	"github.com/gin-gonic/gin"
 )
 
 // Run runs the router on the specified address
@@ -18,9 +19,12 @@ func Run(address string) {
 	v1.GET("/room/:room", getRoom)
 	v1.POST("/room/:room", addSong)
 
+	router.StaticFS("/qrs", http.Dir("qrs"))
+
+	qrcode.CreateQr("http://localhost/", "2345")
+
 	router.Run(address)
 }
-
 
 func sanityCheck(c *gin.Context) {
 	c.Status(http.StatusOK)
