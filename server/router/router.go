@@ -16,7 +16,7 @@ func Run(address string) {
 
 	v1.GET("/sanity", sanityCheck)
 	v1.GET("/room/:room", getRoom)
-	v1.POST("/room/:room", addSong)
+	v1.POST("/room/:room", createRoom) //use the spotify userid as the room name
 
 	router.Run(address)
 }
@@ -36,4 +36,9 @@ func addSong(c *gin.Context) {
 	r := models.Data.GetRoom(room)
 	r.Songs[c.Param("song")] = models.Song{}
 	c.JSON(200, r)
+}
+func createRoom(c *gin.Context) {
+	room := c.Param("room") 
+	r := models.Data.GetRoom(room) 
+	
 }
