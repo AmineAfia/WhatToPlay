@@ -14,6 +14,8 @@ import NotFoundPage from './NotFoundPage';
 
 class App extends React.Component {
 
+
+
   render() {
     const activeStyle = { color: 'blue' };
     return (
@@ -31,7 +33,7 @@ class App extends React.Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/fuel-savings" component={FuelSavingsPage} />
           <Route path="/about" component={AboutPage} />
-          <Route path="/list" component={ListPage} />
+          <Route path="/list/:roomId" component={ListPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

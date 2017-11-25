@@ -13,6 +13,7 @@ export default function songsReducer(state = initialState.songs, action) {
   switch (action.type) {
 
     case GET_SONGS:
+        // console.log(action.payload.data.songs);
         return objectAssign({}, state, {songs: action.payload.data});
 
     default:

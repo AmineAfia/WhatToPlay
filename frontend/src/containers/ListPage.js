@@ -19,6 +19,7 @@ getHeight.toJSON = () => getHeight.toString();
 const getWidth = index => 100 + (10 * (index % 10));
 getWidth.toJSON = () => getWidth.toString();
 
+
 const renderVariableHeightItem = (index, key) =>
   <div
     key={key}
@@ -28,6 +29,22 @@ const renderVariableHeightItem = (index, key) =>
     <ListItem index={index.toString()} />
   </div>;
 renderVariableHeightItem.toJSON = () => renderVariableHeightItem.toString();
+
+
+// renderSongsItem() {
+//   return (
+//     this.props.songs.map(song, key){
+//     <div
+//       key={key}
+//       className={'item' + (index % 2 ? '' : ' even')}
+//       style={{lineHeight: `${getHeight(index)}px`}}
+//     >
+//       <ListItem index={song.toString()} />
+//     </div>
+//   });
+// }
+// const renderListItem = renderSongsItem();
+// renderListItem.toJSON = () => renderListItem.toString();
 
 
 const examples = [
@@ -52,30 +69,51 @@ const examples = [
     itemRenderer: renderVariableHeightItem,
     itemSizeGetter: getHeight,
     type: 'variable'
-  },
+  }
 ];
 
 class ListPage extends Component {
 
   componentWillMount () {
-    this.props.actions.getSongs();
+    this.props.actions.getSongs(this.getUrlHash());
   };
 
-  renderExamples() {
-    return examples.map((props, key) =>
-      <div key={key} className={`example axis-${props.axis}`}>
-       <div className='c_title'> <strong >Component</strong> </div>
-        <div className='component'><ReactList {...props} /></div>
-      </div>
-    );
+  getUrlHash() {
+    return this.props.location.pathname.split('/list/')[1];
+  };
+
+  // renderExamples() {
+  //   return examples.map((props, key) =>
+  //     <div key={key} className={`example axis-${props.axis}`}>
+  //      <div className='c_title'> <strong >Component</strong> </div>
+  //       <div className='component'><ReactList {...props} /></div>
+  //     </div>
+  //   );
+  // }
+
+  renderWidgets() {
+      const songslist = this.props.songs.songs || [];
+      let v
+      let songsArray = []
+      for(v in songslist) {
+        // console.log(songslist[v]);
+        songsArray.push(songslist[v]);
+      }
+      return songsArray.map(function(song) {
+          return (
+          <div key={song.id}>
+            <ListItem index={song.title.toString()} />
+          </div>
+          );
+      });
   }
 
   render() {
+
     return (
       <div className='example'>
         <div className='header'>Songs list</div>
-        <div className='examples'>{this.renderExamples()}</div>
-        <div>{this.state.songs}</div>
+        <div className='component'>{this.renderWidgets()}</div>
       </div>
     );
   }
@@ -83,7 +121,7 @@ class ListPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    songs: state.songsReducer
+    songs: state.songsReducer.songs
   };
 }
 
@@ -93,5 +131,5 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(ListPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ListPage);
 //export default ListPage;
