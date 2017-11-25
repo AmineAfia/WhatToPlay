@@ -1,10 +1,7 @@
 package services
 
 import (
-	"flag"
-	"fmt"
 	"net/http"
-	"os"
 
 	"github.com/AmineAfia/WhatToPlay/server/config"
 	"github.com/AmineAfia/WhatToPlay/server/models"
@@ -25,6 +22,8 @@ var (
 func SetUpAuth() spotify.Authenticator {
 	res := spotify.NewAuthenticator(config.Conf.BaseUrl+redirectURI,
 		spotify.ScopeUserReadPrivate,
+		spotify.ScopePlaylistReadPrivate,
+		spotify.ScopePlaylistModifyPrivate,
 		spotify.ScopePlaylistModifyPublic,
 		spotify.ScopeUserReadCurrentlyPlaying,
 		spotify.ScopeUserReadPlaybackState,
@@ -59,30 +58,17 @@ func CallbHandler(c *gin.Context) {
 	token, _ := auth.Token(state, c.Request)
 	r.Client = auth.NewClient(token)
 
-	var userID = flag.String("user", "", "the Spotify user ID to look up")
+	/*
+		user, err := client.GetUsersPublicProfile(spotify.ID(*userID))
+		if err != nil {
+			fmt.Fprintf(os.Stderr, err.Error())
+			return
+		}*/
 
-	user, err := client.GetUsersPublicProfile(spotify.ID(*userID))
-	if err != nil {
-		fmt.Fprintf(os.Stderr, err.Error())
-		return
-	}
+	r.UserID = config.Conf.SpotifyClient
 
-	r.UserID = user.ID
+	r.FindOrCreatePlaylist()
+	r.UpdatePlaylistSongs()
 
 	c.Redirect(http.StatusSeeOther, config.Conf.BaseUrl+"qrs/"+uid+".png")
-}
-
-// the user will eventually be redirected back to your redirect URL
-// typically you'll have a handler set up like the following:
-func redirectHandler(w http.ResponseWriter, r *http.Request) {
-	// use the same state string here that you used to generate the URL
-	token, err := auth.Token(state, r)
-	if err != nil {
-		http.Error(w, "Couldn't get token", http.StatusNotFound)
-		return
-	}
-	// create a client using the specified token
-	client = auth.NewClient(token)
-
-	// the client can now be used to make authenticated requests
 }
