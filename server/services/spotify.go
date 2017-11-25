@@ -10,17 +10,22 @@ import (
 	"github.com/zmb3/spotify"
 )
 
-const redirectURI = "http://localhost:8080/callback"
+const redirectURI = "callback"
 
 var (
 	auth   = spotify.Authenticator{}
 	setUp  = false
-	state  = "abc123"
+	state  = "nil"
 	client spotify.Client
 )
 
 func SetUpAuth() spotify.Authenticator {
-	res := spotify.NewAuthenticator(config.Conf.SpotifyRedirectUrl, spotify.ScopeUserReadPrivate)
+	res := spotify.NewAuthenticator(config.Conf.BaseUrl+redirectURI,
+		spotify.ScopeUserReadPrivate,
+		spotify.ScopePlaylistModifyPublic,
+		spotify.ScopeUserReadCurrentlyPlaying,
+		spotify.ScopeUserReadPlaybackState,
+		spotify.ScopeUserModifyPlaybackState)
 	res.SetAuthInfo(config.Conf.SpotifyAppClientId, config.Conf.SpotifyAppClientSecret)
 	setUp = true
 	return res
@@ -36,14 +41,22 @@ func Auth(c *gin.Context) {
 
 func CallbHandler(c *gin.Context) {
 
-	_ = c.Query("code")  // code
-	_ = c.Query("state") // state
+	code := c.Query("code")   // code
+	state := c.Query("state") // state
+
+	if code == "" {
+		c.Redirect(http.StatusSeeOther, "/")
+		return
+	}
 
 	uid := uuid.NewV4().String()
 
-	_ = models.Data.GetOrCreateRoom(uid)
+	r := models.Data.GetOrCreateRoom(uid)
+	//r.Token = code
+	token, _ := auth.Token(state, c.Request)
+	r.Client = auth.NewClient(token)
 
-	c.Redirect(http.StatusSeeOther, "http://localhost:8080/room/"+uid)
+	c.Redirect(http.StatusSeeOther, config.Conf.BaseUrl+"qrs/"+uid+".png")
 }
 
 // the user will eventually be redirected back to your redirect URL

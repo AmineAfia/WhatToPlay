@@ -1,12 +1,13 @@
 package models
 
-import "github.com/AmineAfia/WhatToPlay/server/qrcode"
+import (
+	"github.com/AmineAfia/WhatToPlay/server/config"
+	"github.com/AmineAfia/WhatToPlay/server/qrcode"
+)
 
 type DB struct {
 	Rooms map[string]*Room
 }
-
-const hostname = "http://localhost:8080/"
 
 func (db DB) GetOrCreateRoom(id string) *Room {
 	var room = db.Rooms[id]
@@ -15,7 +16,7 @@ func (db DB) GetOrCreateRoom(id string) *Room {
 	}
 	db.Rooms[id] = &Room{Name: id, Songs: make(map[string]Song)}
 
-	qrcode.CreateQr(hostname, id)
+	qrcode.CreateQr(config.Conf.BaseUrl, id)
 
 	return db.Rooms[id]
 }

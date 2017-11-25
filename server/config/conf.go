@@ -12,7 +12,7 @@ import (
 
 type ConfigValues struct {
 	DatabaseConnectString  string
-	SpotifyRedirectUrl     string
+	BaseUrl                string
 	SpotifyAppClientId     string
 	SpotifyAppClientSecret string
 }
@@ -24,7 +24,7 @@ func DefaultConfig() ConfigValues {
 
 	values := ConfigValues{}
 	values.DatabaseConnectString = "mongodb://admin:<PASSWORD>@localhost"
-	values.SpotifyRedirectUrl = "http://localhost:8080/callback"
+	values.BaseUrl = "http://localhost:8080/"
 	values.SpotifyAppClientId = "get this shit from spotify dev portal"
 	values.SpotifyAppClientSecret = "this shit too"
 
