@@ -1,20 +1,11 @@
 package router 
 
 import (
-	"github.com/gin-gonic/gin"
+
 	"github.com/AmineAfia/WhatToPlay/server/models"
 )
 
 
-func Upvote(c *gin.Context) {
-	room :=	GetRoom("RoomId")
-	room.Upvote("songid", "userid")
-} 
-
-func Downvote(c *gin.Context) {
-	room :=	GetRoom("RoomId")
-	room.Downvote("songid", "userid")
-}
 
 /* 
 AddSong() 

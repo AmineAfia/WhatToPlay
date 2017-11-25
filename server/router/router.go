@@ -60,9 +60,17 @@ func addSong(c *gin.Context) {
 }
 
 func upvote(c *gin.Context) {
-
+	room := c.Param("room")
+	r := models.Data.GetOrCreateRoom(room)
+	s := r.CreateSong(c.Param("song"))
+	s.Upvote(c.DefaultQuery("user", "Guest"))
+	c.JSON(200, r)
 }
 func downvote(c *gin.Context) {
-	
+	room := c.Param("room")
+	r := models.Data.GetOrCreateRoom(room)
+	s := r.CreateSong(c.Param("song"))
+	s.Downvote(c.DefaultQuery("user", "Guest"))
+	c.JSON(200, r)
 }
 

@@ -11,11 +11,11 @@ type Room struct {
 	Songs	map[string]Song //maps a songid to its class
 }
 
-func (r Room) Upvote(song string, user string) {
-	r.Songs[song].Votes[user] = Up
+func (s Song) Upvote(user string) {
+	s.Votes[user] = Up
 }
-func (r Room) Downvote(song string, user string) {
-	r.Songs[song].Votes[user] =  Down
+func (s Song) Downvote(user string) {
+	s.Votes[user] =  Down
 }
 
 // Song represents the item in the list
