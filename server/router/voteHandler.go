@@ -4,6 +4,7 @@ import (
 	"github.com/AmineAfia/WhatToPlay/server/models"
 )
 
+
 func Upvote(c *gin.Context) {
 	room :=	GetRoom("RoomId")
 	room.Upvote("songid", "userid")
