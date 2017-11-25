@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/AmineAfia/WhatToPlay/server/models"
+	"github.com/AmineAfia/WhatToPlay/server/services"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,17 +18,17 @@ func Run(address string) {
 	v1.GET("/sanity", sanityCheck)
 	v1.GET("/room", dumpDb)
 	v1.GET("/room/:room", getRoom)
-<<<<<<< HEAD
-	v1.POST("/playlist", )
-=======
+
 	v1.POST("/room/:room", createRoom) //use the spotify userid as the room name
 	v1.POST("/room/:room/songs/:song", addSong)
 
 	v1.POST("/room/:room/songs/:song/upvote", upvote)
 	v1.POST("/room/:room/songs/:song/downvote", downvote)
 
+	router.GET("/auth", services.Auth)
+	router.GET("/callback", services.CallbHandler)
+
 	router.StaticFS("/qrs", http.Dir("qrs"))
->>>>>>> 7384e8623721dacb08700b04d8a1de204ca6f546
 
 	router.Run(address)
 }
@@ -38,10 +39,6 @@ func sanityCheck(c *gin.Context) {
 
 func getRoom(c *gin.Context) {
 	room := c.Param("room")
-<<<<<<< HEAD
-	c.JSON(200, models.Data.GetRoom(room))
-}
-=======
 	c.JSON(200, models.Data.GetOrCreateRoom(room))
 }
 
@@ -81,5 +78,3 @@ func downvote(c *gin.Context) {
 	s.Downvote(c.DefaultQuery("user", "Guest"))
 	c.JSON(200, r)
 }
-
->>>>>>> 7384e8623721dacb08700b04d8a1de204ca6f546

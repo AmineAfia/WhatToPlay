@@ -30,6 +30,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "axios": "0.17.1",
     "object-assign": "4.1.0",
     "react": "16.0.0",
     "react-dom": "16.0.0",
