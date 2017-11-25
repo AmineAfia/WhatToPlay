@@ -12,12 +12,6 @@ const renderItem = (index, key) =>
   </div>;
 renderItem.toJSON = () => renderItem.toString();
 
-const renderSquareItem = (index, key) =>
-  <div key={key} className={'square-item' + (index % 2 ? '' : ' even')}>
-    {index}
-  </div>;
-renderSquareItem.toJSON = () => renderSquareItem.toString();
-
 const getHeight = index => 30 + (10 * (index % 10));
 getHeight.toJSON = () => getHeight.toString();
 
@@ -34,98 +28,30 @@ const renderVariableHeightItem = (index, key) =>
   </div>;
 renderVariableHeightItem.toJSON = () => renderVariableHeightItem.toString();
 
-const renderVariableWidthItem = (index, key) =>
-  <div
-    key={key}
-    className={'item' + (index % 2 ? '' : ' even')}
-    style={{width: `${getWidth(index)}px`}}
-  >
-    {index}
-  </div>;
-renderVariableWidthItem.toJSON = () => renderVariableWidthItem.toString();
-
-const renderGridLine = (row, key) =>
-  <ReactList
-    axis='x'
-    key={key}
-    length={10}
-    itemRenderer={
-      (column, key) => renderSquareItem(column + (20 * row), key)
-    }
-    type='uniform'
-  />;
-renderGridLine.toJSON = () => renderGridLine.toString();
 
 const examples = [
+  // {
+  //   length: 10,
+  //   itemRenderer: renderVariableHeightItem
+  // },
+  // {
+  //   length: 10,
+  //   itemRenderer: renderVariableHeightItem,
+  //   type: 'variable'
+  // },
+  // {
+  //   length: 10,
+  //   itemRenderer: renderVariableHeightItem,
+  //   itemSizeGetter: getHeight,
+  //   type: 'variable'
+  // },
   {
-    length: 10,
-    itemRenderer: renderVariableHeightItem
-  },
-  {
-    axis: 'x',
-    length: 10,
-    itemRenderer: renderVariableWidthItem
-  },
-  {
-    length: 10,
-    itemRenderer: renderVariableHeightItem,
-    type: 'variable'
-  },
-  {
-    axis: 'x',
-    length: 10,
-    itemRenderer: renderVariableWidthItem,
-    type: 'variable'
-  },
-  {
-    length: 10,
+    length: 1000,
+    initialIndex: 10,
     itemRenderer: renderVariableHeightItem,
     itemSizeGetter: getHeight,
     type: 'variable'
   },
-  {
-    axis: 'x',
-    length: 10,
-    itemRenderer: renderVariableWidthItem,
-    itemSizeGetter: getWidth,
-    threshold: 0,
-    type: 'variable'
-  },
-  {
-    length: 10,
-    initialIndex: 5,
-    itemRenderer: renderVariableHeightItem,
-    itemSizeGetter: getHeight,
-    type: 'variable'
-  },
-  {
-    length: 10,
-    itemRenderer: renderItem,
-    type: 'uniform'
-  },
-  {
-    axis: 'x',
-    length: 10,
-    itemRenderer: renderItem,
-    type: 'uniform'
-  },
-  {
-    length: 10,
-    itemRenderer: renderSquareItem,
-    type: 'uniform'
-  },
-  {
-    length: 10,
-    initialIndex: 5,
-    itemRenderer: renderItem,
-    type: 'uniform'
-  },
-  {
-    length: 10,
-    itemRenderer: renderGridLine,
-    type: 'uniform',
-    useTranslate3d: true
-  }
 ];
 
 class ListPage extends Component {
@@ -146,14 +72,8 @@ class ListPage extends Component {
 
   render() {
     return (
-      <div className='ListPage'>
-        <a className='banner' href='https://github.com/coderiety/react-list'>
-          <img
-            src='https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67'
-            alt='Fork me on GitHub'
-          />
-        </a>
-        <div className='header'>ReactList</div>
+      <div className='example'>
+        <div className='header'>Songs list</div>
         <div className='examples'>{this.renderExamples()}</div>
       </div>
     );
@@ -166,7 +86,5 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-// render(<ListPage />, document.getElementById('main'));
-// export default connect(ListPage);
 //export default connect(mapDispatchToProps)(ListPage);
 export default ListPage;
