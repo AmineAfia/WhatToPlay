@@ -22,13 +22,13 @@
         padding: 40px;
       }
       .example {
-        padding: 25px;
+        padding: 10px;
       }
       .props {
         overflow: auto;
       }
       .component {
-        border: 10px solid #38afd4;
+        border: 0px solid #38afd4;
         border-radius: 5px;
         height: 300px;
         overflow: auto;
