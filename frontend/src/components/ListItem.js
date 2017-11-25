@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/list-page.css';
-const ListItem = ({index}) => {
+
+
+
+function ListItem({index}) {
+
   return (
-    <table>
+    <table className='tr-zone'>
       <tbody>
-        <tr className='tr-zone'>
+        <tr >
           <td className="fuel-savings-label"><button className='upButton'></button></td>
-          <td> Song: {index} </td>
-          <td><button className='downButton'></button></td>
+          <td className='song'> Song: {index} </td>
+          <td className="dbutt"><button className='downButton'></button></td>
       </tr>
       </tbody>
     </table>
@@ -16,7 +20,7 @@ const ListItem = ({index}) => {
 };
 
 ListItem.propTypes = {
-  index: PropTypes.object.isRequired
+  index: PropTypes.string.isRequired
 };
 
 export default ListItem;
