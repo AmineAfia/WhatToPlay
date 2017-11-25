@@ -33,6 +33,10 @@ const (
 	Down
 )
 
+func (r Room) FindOrCreatePlaylist(playlistname string) {
+	//TODO
+}
+
 func (r Room) CreateSong(id string) Song {
 	var song Song
 	song = r.Songs[id]
