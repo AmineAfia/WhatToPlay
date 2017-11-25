@@ -18,14 +18,16 @@ type Room struct {
 	RenewTreshold int            `json:"-"`
 }
 
-func (s Song) Upvote(user string) {
+func (s *Song) Upvote(user string) {
 	s.Votes[user] = Up
+	s.CalculateVotes()
 }
-func (s Song) Downvote(user string) {
+func (s *Song) Downvote(user string) {
 	s.Votes[user] = Down
+	s.CalculateVotes()
 }
 
-func (s Song) CalculateVotes() int {
+func (s *Song) CalculateVotes() int {
 	res := 0
 
 	for _, v := range s.Votes {
