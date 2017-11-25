@@ -1,7 +1,10 @@
 package services
 
 import (
+	"flag"
+	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/AmineAfia/WhatToPlay/server/config"
 	"github.com/AmineAfia/WhatToPlay/server/models"
@@ -55,6 +58,16 @@ func CallbHandler(c *gin.Context) {
 	//r.Token = code
 	token, _ := auth.Token(state, c.Request)
 	r.Client = auth.NewClient(token)
+
+	var userID = flag.String("user", "", "the Spotify user ID to look up")
+
+	user, err := client.GetUsersPublicProfile(spotify.ID(*userID))
+	if err != nil {
+		fmt.Fprintf(os.Stderr, err.Error())
+		return
+	}
+
+	r.UserID = user.ID
 
 	c.Redirect(http.StatusSeeOther, config.Conf.BaseUrl+"qrs/"+uid+".png")
 }

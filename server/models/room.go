@@ -10,6 +10,7 @@ type Room struct {
 	Songs map[string]Song `json:"songs"` //maps a songid to its class
 	//Token  string          `json:"-"`
 	Client spotify.Client `json:"-"`
+	UserID string         `json:"hostid"`
 }
 
 func (s Song) Upvote(user string) {
@@ -35,6 +36,7 @@ const (
 
 func (r Room) FindOrCreatePlaylist(playlistname string) {
 	//TODO
+	//list, err := Client.GetPlaylistsForUser(userID)
 }
 
 func (r Room) CreateSong(id string) Song {
