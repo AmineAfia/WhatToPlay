@@ -7,7 +7,7 @@ import (
 
 // Room represents a room
 type Room struct {
-	Name	string				`json:"name`
+	Name	string				`json:"name"`
 	Songs	map[string]Song 	`json:"songs"`	//maps a songid to its class 
 	Token	string 				`json:"-"`
 }
