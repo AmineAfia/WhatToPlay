@@ -7,8 +7,9 @@ import (
 
 // Room represents a room
 type Room struct {
-	Name	string
-	Songs	map[string]Song //maps a songid to its class
+	Name	string				`json:"name`
+	Songs	map[string]Song 	`json:"songs"`	//maps a songid to its class 
+	Token	string 				`json:"-"`
 }
 
 func (s Song) Upvote(user string) {
@@ -20,10 +21,11 @@ func (s Song) Downvote(user string) {
 
 // Song represents the item in the list
 type Song struct {
-	ID		string
-	Title	string
-	Artist	string
-	Votes 	map[string]voteDirection	
+	ID		string	`json:"id"`
+	Title	string	`json:"title"`
+	Artist	string	`json:"artist"`
+	Votes 	map[string]voteDirection `json:"votes"`	
+
 }
 type voteDirection int 
 const (
