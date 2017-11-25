@@ -16,7 +16,7 @@ func Run(address string) {
 
 	v1.GET("/sanity", sanityCheck)
 	v1.GET("/room/:room", getRoom)
-	v1.POST("/playlist", )
+	v1.POST("/room/:room", addSong)
 
 	router.Run(address)
 }
@@ -29,4 +29,11 @@ func sanityCheck(c *gin.Context) {
 func getRoom(c *gin.Context) {
 	room := c.Param("room")
 	c.JSON(200, models.Data.GetRoom(room))
+}
+
+func addSong(c *gin.Context) {
+	room := c.Param("room")
+	r := models.Data.GetRoom(room)
+	r.Songs[c.Param("song")] = models.Song{}
+	c.JSON(200, r)
 }
