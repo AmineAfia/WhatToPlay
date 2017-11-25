@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/AmineAfia/WhatToPlay/server/models"
+	"github.com/AmineAfia/WhatToPlay/server/services"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,6 +23,9 @@ func Run(address string) {
 
 	v1.POST("/room/:room/songs/:song/upvote", upvote)
 	v1.POST("/room/:room/songs/:song/downvote", downvote)
+
+	router.GET("/auth", services.Auth)
+	router.GET("/callback", services.CallbHandler)
 
 	router.StaticFS("/qrs", http.Dir("qrs"))
 
@@ -63,6 +67,5 @@ func upvote(c *gin.Context) {
 
 }
 func downvote(c *gin.Context) {
-	
-}
 
+}
