@@ -28,17 +28,17 @@ func sanityCheck(c *gin.Context) {
 
 func getRoom(c *gin.Context) {
 	room := c.Param("room")
-	c.JSON(200, models.Data.GetRoom(room))
+	c.JSON(200, models.Data.GetOrCreateRoom(room))
 }
 
 func addSong(c *gin.Context) {
 	room := c.Param("room")
-	r := models.Data.GetRoom(room)
+	r := models.Data.GetOrCreateRoom(room)
 	r.Songs[c.Param("song")] = models.Song{}
 	c.JSON(200, r)
 }
 func createRoom(c *gin.Context) {
 	room := c.Param("room") 
-	r := models.Data.GetRoom(room) 
-	
+	models.Data.GetOrCreateRoom(room) 
+
 }

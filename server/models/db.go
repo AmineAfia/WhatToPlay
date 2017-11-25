@@ -4,7 +4,7 @@ type DB struct {
 	Rooms	map[string]*Room
 }
 
-func (db DB) GetRoom(id string) *Room {
+func (db DB) GetOrCreateRoom(id string) *Room {
 	var room = db.Rooms[id]
 	if room != nil {
 		return room
