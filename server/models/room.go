@@ -2,7 +2,6 @@ package models
 
 import (
 	"log"
-	"math/rand"
 	"sort"
 
 	"github.com/zmb3/spotify"
@@ -37,7 +36,7 @@ func (s Song) CalculateVotes() int {
 		}
 	}
 	s.VotesI = res
-	return rand.Intn(50)
+	return res
 }
 
 // Song represents the item in the list
