@@ -23,6 +23,7 @@
         text-align: center;
         font-size: 50px;
         padding: 40px;
+        margin-bottom: 15%;
       }
       .example {
         padding: 10px;
@@ -107,13 +108,31 @@
         background: url('img/cancel.png') center no-repeat;
         padding: 32px;
         border:none;
+        right:100%;
         
         
         
       }
 
       .tr-zone{
+        background: -webkit-linear-gradient(bottom,  rgba(34, 34, 34,0.5), rgba(0, 0, 0,0.5));
         
+              /*  background-color: rgba(34, 34, 34,0.6);
+                
+                
+                border-bottom: thin solid;
+               /* border-radius: 50px;
+                /*background: linear-gradient(rgba(5, 224, 195,0.3), rgba(12, 34, 134,0.3)); */
+                line-height: 30px;
+                padding: auto;
+
+
+
+                width: 100%;
+                
+                
+                
+                
 
       }
 
@@ -141,4 +160,17 @@
       text-align: center;
 
       
+     }
+
+     .song{
+
+      
+      margin-right: 100px;
+      font-size: 20px;
+        color: #a3a3a3;
+     }
+
+     .dbutt{
+
+      text-align: right;
      }
