@@ -54,3 +54,9 @@ func addSong(c *gin.Context) {
 	r.CreateSong(c.Param("song"))
 	c.JSON(200, r)
 }
+func upvote(c *gin.Context) {
+
+}
+func downvote(c *gin.Context) {
+	
+}
