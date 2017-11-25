@@ -4,7 +4,7 @@
         
       }
       a {
-        color: #38afd4;
+        color: #158000;
         text-decoration: none;
       }
       a:hover {
@@ -124,5 +124,21 @@
           width: 0px;
           background: transparent; /* make scrollbar transparent */
       }
+
+      .sub{
+        font-size: 30px;
+        margin: 50px;
+        color:rgba(0, 0, 0, 0.7);
+        background-color: #158000; /* rgba(0, 0, 0, 0.2); */
+        border-radius: 30px;
+        border:none;
+        padding:20px;
+        
+      }
       
-     
+     .sub_div{
+      
+      text-align: center;
+
+      
+     }
