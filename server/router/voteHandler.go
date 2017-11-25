@@ -1,6 +1,7 @@
 package router 
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/AmineAfia/WhatToPlay/server/models"
 )
 
