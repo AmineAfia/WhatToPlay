@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import ReactList from 'react-list';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actions from '../actions/votingActions';
+import * as actions from '../actions/songsRefreshActions';
 import '../styles/list-page.css';
 import ListItem from '../components/ListItem';
 
@@ -13,7 +13,7 @@ const renderItem = (index, key) =>
   </div>;
 renderItem.toJSON = () => renderItem.toString();
 
-const getHeight = index => 30 + (10 * (index % 10));
+const getHeight = index => 50; // + (10 * (index % 10));
 getHeight.toJSON = () => getHeight.toString();
 
 const getWidth = index => 100 + (10 * (index % 10));
@@ -56,15 +56,15 @@ const examples = [
 ];
 
 class ListPage extends Component {
-  saveFuelSavings = () => {
-    this.props.actions.upvoteSong();
+
+  componentWillMount () {
+    this.props.actions.getSongs();
   }
+  
 
   renderExamples() {
     return examples.map((props, key) =>
       <div key={key} className={`example axis-${props.axis}`}>
-        <strong>Props</strong>
-        <pre className='props'>{JSON.stringify(props, null, 2)}</pre>
         <strong>Component</strong>
         <div className='component'><ReactList {...props} /></div>
       </div>
@@ -87,5 +87,5 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-//export default connect(mapDispatchToProps)(ListPage);
-export default ListPage;
+export default connect(null, mapDispatchToProps)(ListPage);
+//export default ListPage;
