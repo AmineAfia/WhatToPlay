@@ -15,6 +15,7 @@ type ConfigValues struct {
 	BaseUrl                string
 	SpotifyAppClientId     string
 	SpotifyAppClientSecret string
+	SpotifyClient          string
 }
 
 var Conf = DefaultConfig()
@@ -27,6 +28,7 @@ func DefaultConfig() ConfigValues {
 	values.BaseUrl = "http://localhost:8080/"
 	values.SpotifyAppClientId = "get this shit from spotify dev portal"
 	values.SpotifyAppClientSecret = "this shit too"
+	values.SpotifyClient = "yourUserId"
 
 	return values
 }

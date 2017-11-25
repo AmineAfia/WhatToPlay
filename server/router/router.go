@@ -2,15 +2,27 @@ package router
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/AmineAfia/WhatToPlay/server/models"
 	"github.com/AmineAfia/WhatToPlay/server/services"
 	"github.com/gin-gonic/gin"
+	"github.com/itsjamie/gin-cors"
 )
 
 // Run runs the router on the specified address
 func Run(address string) {
 	router := gin.Default()
+
+	router.Use(cors.Middleware(cors.Config{
+		Origins:         "*",
+		Methods:         "GET, PUT, POST, DELETE",
+		RequestHeaders:  "Origin, Authorization, Content-Type",
+		ExposedHeaders:  "",
+		MaxAge:          50 * time.Second,
+		Credentials:     true,
+		ValidateHeaders: false,
+	}))
 
 	api := router.Group("/api")
 	v1 := api.Group("/v1")
