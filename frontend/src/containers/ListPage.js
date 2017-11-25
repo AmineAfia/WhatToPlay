@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/votingActions';
 import '../styles/list-page.css';
+import ListItem from '../components/ListItem';
 
 const renderItem = (index, key) =>
   <div key={key} className={'item' + (index % 2 ? '' : ' even')}>
@@ -24,7 +25,7 @@ const renderVariableHeightItem = (index, key) =>
     className={'item' + (index % 2 ? '' : ' even')}
     style={{lineHeight: `${getHeight(index)}px`}}
   >
-    {index}
+    <ListItem index={index} />
   </div>;
 renderVariableHeightItem.toJSON = () => renderVariableHeightItem.toString();
 
