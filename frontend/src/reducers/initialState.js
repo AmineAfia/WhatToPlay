@@ -14,5 +14,12 @@ export default {
       annual: 0,
       threeYear: 0
     }
-  }
+  },
+  songs: [{
+    id: '',
+    title: '',
+    artist: '',
+    votes: '',
+    index: '',
+  }]
 };

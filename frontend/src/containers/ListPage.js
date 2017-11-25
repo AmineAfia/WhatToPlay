@@ -25,7 +25,7 @@ const renderVariableHeightItem = (index, key) =>
     className={'item' + (index % 2 ? '' : ' even')}
     style={{lineHeight: `${getHeight(index)}px`}}
   >
-    <ListItem index={index} />
+    <ListItem index={index.toString()} />
   </div>;
 renderVariableHeightItem.toJSON = () => renderVariableHeightItem.toString();
 
@@ -59,8 +59,7 @@ class ListPage extends Component {
 
   componentWillMount () {
     this.props.actions.getSongs();
-  }
-  
+  };
 
   renderExamples() {
     return examples.map((props, key) =>
@@ -76,9 +75,16 @@ class ListPage extends Component {
       <div className='example'>
         <div className='header'>Songs list</div>
         <div className='examples'>{this.renderExamples()}</div>
+        <div>{this.state.songs}</div>
       </div>
     );
   }
+}
+
+function mapStateToProps(state) {
+  return {
+    songs: state.songsReducer
+  };
 }
 
 function mapDispatchToProps(dispatch) {

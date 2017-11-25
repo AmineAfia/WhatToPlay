@@ -16,7 +16,7 @@ const ListItem = ({index}) => {
 };
 
 ListItem.propTypes = {
-  index: PropTypes.object.isRequired
+  index: PropTypes.string.isRequired
 };
 
 export default ListItem;
