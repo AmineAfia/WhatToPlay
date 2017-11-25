@@ -9,7 +9,7 @@ func (db DB) GetOrCreateRoom(id string) *Room {
 	if room != nil {
 		return room
 	}
-	db.Rooms[id] = &Room{Name: id}
+	db.Rooms[id] = &Room{Name: id, Songs: make(map[string]Song)}
 	return db.Rooms[id]
 }
 
