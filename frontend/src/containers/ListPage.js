@@ -65,8 +65,6 @@ class ListPage extends Component {
   renderExamples() {
     return examples.map((props, key) =>
       <div key={key} className={`example axis-${props.axis}`}>
-        <div className='c_title'><strong className='c_title'>Props</strong></div>
-        <pre className='props'>{JSON.stringify(props, null, 2)}</pre>
        <div className='c_title'> <strong >Component</strong> </div>
         <div className='component'><ReactList {...props} /></div>
       </div>
