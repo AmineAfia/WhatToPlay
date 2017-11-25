@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/list-page.css';
-const ListItem = ({index}) => {
+
+
+
+function ListItem({index}) {
+
   return (
     <table>
       <tbody>
@@ -16,7 +20,7 @@ const ListItem = ({index}) => {
 };
 
 ListItem.propTypes = {
-  index: PropTypes.object.isRequired
+  index: PropTypes.string.isRequired
 };
 
 export default ListItem;

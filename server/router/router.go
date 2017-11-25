@@ -30,6 +30,7 @@ func Run(address string) {
 	v1.GET("/sanity", sanityCheck)
 	v1.GET("/room", dumpDb)
 	v1.GET("/room/:room", getRoom)
+	v1.GET("/room/:room/update", updateRoom)
 
 	v1.POST("/room/:room", createRoom) //use the spotify userid as the room name
 	v1.POST("/room/:room/songs/:song", addSong)
@@ -51,7 +52,17 @@ func sanityCheck(c *gin.Context) {
 
 func getRoom(c *gin.Context) {
 	room := c.Param("room")
-	c.JSON(200, models.Data.GetOrCreateRoom(room))
+	r := models.Data.GetOrCreateRoom(room)
+	r.UpdatePlaylistSongs()
+	c.JSON(200, r)
+}
+
+func updateRoom(c *gin.Context) {
+	room := c.Param("room")
+	r := models.Data.GetOrCreateRoom(room)
+	r.UpdatePlaylistSongs()
+	r.CheckUpvotes()
+	c.JSON(200, r)
 }
 
 /*

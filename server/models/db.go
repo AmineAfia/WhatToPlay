@@ -14,7 +14,7 @@ func (db DB) GetOrCreateRoom(id string) *Room {
 	if room != nil {
 		return room
 	}
-	db.Rooms[id] = &Room{Name: id, Songs: make(map[string]Song)}
+	db.Rooms[id] = &Room{Name: id, Songs: make(map[string]Song), RenewTreshold: 15}
 
 	qrcode.CreateQr(config.Conf.BaseUrl, id)
 

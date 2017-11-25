@@ -65,7 +65,13 @@ func CallbHandler(c *gin.Context) {
 			return
 		}*/
 
-	r.UserID = config.Conf.SpotifyClient
+	user, err := r.Client.CurrentUser()
+
+	if err != nil {
+		panic(err)
+	} else {
+		r.UserID = user.User.ID
+	}
 
 	r.FindOrCreatePlaylist()
 	r.UpdatePlaylistSongs()
