@@ -16,28 +16,37 @@
         top: 0;
       }
       .header {
-        background: #fff;
-        color: #ec7720;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 50px;
+        color: #158000;
+        text-align: center;
         font-size: 50px;
         padding: 40px;
       }
       .example {
-        padding: 25px;
+        padding: 10px;
       }
       .props {
         overflow: auto;
       }
       .component {
-        border: 10px solid #38afd4;
+        border: 2px solid #222222;
+        
         border-radius: 5px;
         height: 300px;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
       }
       .item {
-        background: linear-gradient(#fff, #eee);
+        
+        background-color: rgb(34, 34, 34);
+        
+        
+        border-bottom: thin solid;
+       /* border-radius: 50px;
+        /*background: linear-gradient(rgba(5, 224, 195,0.3), rgba(12, 34, 134,0.3)); */
         line-height: 30px;
-        padding: 0 10px;
+        padding:  10px;
       }
       .axis-x .item {
         display: inline-block;
@@ -48,6 +57,7 @@
       }
       .axis-x .component {
         white-space: nowrap;
+        
       }
       .square-item {
         background: linear-gradient(#fff, #eee);
@@ -57,5 +67,24 @@
         width: 100px;
       }
       .even {
-        background: linear-gradient(#ddd, #ccc);
+        
+        background-color: rgb(34, 34, 34);
+        /*background: linear-gradient(#ddd, #ccc);*/
+        
+        
       }
+      
+      body{
+
+        background-color: rgb(34, 34, 34);
+      }
+
+      .c_title{
+        
+      text-align: center;
+
+      }
+
+      
+
+     
