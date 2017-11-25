@@ -19,6 +19,8 @@ func Run(address string) {
 	v1.GET("/room/:room", getRoom)
 	v1.POST("/room/:room", createRoom) //use the spotify userid as the room name
 	v1.POST("/room/:room/songs/:song", addSong)
+	v1.POST("/room/:room/songs/:song/upvote", upvote)
+	v1.POST("/room/:room/songs/:song/downvote", downvote)
 	router.Run(address)
 }
 
