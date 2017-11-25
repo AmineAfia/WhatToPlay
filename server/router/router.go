@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/AmineAfia/WhatToPlay/server/models"
-	"github.com/AmineAfia/WhatToPlay/server/qrcode"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,8 +21,6 @@ func Run(address string) {
 	v1.POST("/room/:room/songs/:song", addSong)
 	router.StaticFS("/qrs", http.Dir("qrs"))
 
-	qrcode.CreateQr("http://localhost/", "2345")
-
 	router.Run(address)
 }
 
@@ -35,6 +32,7 @@ func getRoom(c *gin.Context) {
 	room := c.Param("room")
 	c.JSON(200, models.Data.GetOrCreateRoom(room))
 }
+
 /*
 func addSong(c *gin.Context) {
 	room := c.Param("room")
@@ -43,8 +41,8 @@ func addSong(c *gin.Context) {
 	c.JSON(200, r)
 } */
 func createRoom(c *gin.Context) {
-	room := c.Param("room") 
-	r := models.Data.GetOrCreateRoom(room) 
+	room := c.Param("room")
+	r := models.Data.GetOrCreateRoom(room)
 	c.JSON(200, r)
 }
 func dumpDb(c *gin.Context) {
