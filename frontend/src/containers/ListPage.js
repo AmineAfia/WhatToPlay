@@ -79,7 +79,7 @@ class ListPage extends Component {
   };
 
   getUrlHash() {
-    return this.props.location.pathname.split('/list/')[1];
+    return this.props.location.pathname.split('/room/')[1];
   };
 
   // renderExamples() {
