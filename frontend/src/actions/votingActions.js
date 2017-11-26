@@ -3,10 +3,10 @@ import * as types from '../constants/actionTypes';
 import {getFormattedDateTime} from '../utils/dates';
 
 
-export function upVoteSong(songID) {
+export function upVoteSong(roomID, songID, userID) {
   return function(dispatch){
 
-    const request = axios.post('http://127.0.0.1:8080/api/v1/room/27029bbe-7fd6-4512-846f-7763fc97dad7/songs/{songID}/upvote')
+    const request = axios.post('http://127.0.0.1:8080/api/v1/room/${roomID}/songs/{songID}/upvote?user=${userID}')
     .then(function (response) {
       console.log('upvoted');
       dispatch({
@@ -16,10 +16,10 @@ export function upVoteSong(songID) {
   }
 }
 
-export function downVoteSong(songID) {
+export function downVoteSong(roomID, songID, userID) {
   return function(dispatch){
 
-    const request = axios.post('http://127.0.0.1:8080/api/v1/room/27029bbe-7fd6-4512-846f-7763fc97dad7/songs/{songID}/downvote')
+    const request = axios.post('http://127.0.0.1:8080/api/v1/room/${roomID}/songs/{songID}/downvote?user=${userID}')
     .then(function (response) {
       console.log('downvoted');
       dispatch({
