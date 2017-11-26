@@ -15,5 +15,6 @@ export default {
       threeYear: 0
     }
   },
-  songs: []
+  songs: [],
+  updates: []
 };

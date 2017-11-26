@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../actions/songsRefreshActions';
 import '../styles/list-page.css';
 import ListItem from '../components/ListItem';
+import Refresh from '../components/Refresh';
 
 const renderItem = (index, key) =>
   <div key={key} className={'item' + (index % 2 ? '' : ' even')}>
@@ -91,8 +92,8 @@ class ListPage extends Component {
   //   );
   // }
 
-  renderWidgets() {
-      const songslist = this.props.songs.songs || [];
+  renderWidgets(songslist) {
+      // const songslist = this.props.songs.songs || [];
       let v
       let songsArray = []
       for(v in songslist) {
@@ -108,12 +109,39 @@ class ListPage extends Component {
       });
   }
 
-  render() {
+  // renderWidgetsUpdate() {
+  //     const songslist = this.props.updates.updates || [];
+  //     let v
+  //     let songsArray = []
+  //     for(v in songslist) {
+  //       // console.log(songslist[v]);
+  //       songsArray.push(songslist[v]);
+  //     }
+  //     return songsArray.map(function(song) {
+  //         return (
+  //         <div key={song.id}>
+  //           <ListItem index={song.title.toString()} />
+  //         </div>
+  //         );
+  //     });
+  // }
 
+  refreshList = () => {
+    this.props.actions.refreshList(this.getUrlHash());
+    console.log('start refresch');
+    console.log(this.props.updates.songs);
+    // console.log(this.props);
+    this.renderWidgets(this.props.updates.songs);
+    this.forceUpdate()
+    console.log('end refresch');
+  }
+
+  render() {
     return (
       <div className='example'>
         <div className='header'>Songs list</div>
-        <div className='component'>{this.renderWidgets()}</div>
+        <div className='component'>{this.renderWidgets(this.props.songs.songs)}</div>
+        <Refresh onRefreshClick={this.refreshList}/>
       </div>
     );
   }
@@ -121,7 +149,8 @@ class ListPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    songs: state.songsReducer.songs
+    songs: state.songsReducer.songs,
+    updates: state.songsReducer.updates
   };
 }
 
