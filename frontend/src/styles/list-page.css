@@ -134,6 +134,18 @@
         
       }
 
+      .playL{
+        background: url('img/play-button.png') center no-repeat;
+        padding: 32px;
+        border:none;
+        left:100%;
+        
+        
+        
+        
+      }
+      
+
       .tr-zone{
         background: -webkit-linear-gradient(bottom,  rgba(34, 34, 34,0.5), rgba(0, 0, 0,0.5));
         
@@ -185,14 +197,25 @@
      .song{
 
       
-      margin-right: 100px;
-      font-size: 20px;
+      /*margin-right: 100px;*/
+      font-size: 23px;
+      text-align: center;
         color: #a3a3a3;
      }
 
      .dbutt{
 
       text-align: right;
+     }
+
+     .ubutt{
+
+      text-align: left;
+     }
+
+     .pbutt{
+      text-align: left;
+
      }
 
      .ref{
