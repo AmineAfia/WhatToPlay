@@ -151,7 +151,7 @@ class ListPage extends Component {
       <div className='example'>
         <div className='header'>Songs list</div>
         <div className='component'>{this.renderWidgets(this.props.songs.songs)}</div>
-        <Refresh onRefreshClick={this.refreshList}/>
+        <div className='ref' ><Refresh className='refb' onRefreshClick={this.refreshList} /></div>
       </div>
     );
   }

@@ -114,6 +114,26 @@
         
       }
 
+
+      .downButton:active{
+        background: url('img/error.png') center no-repeat;
+        padding: 32px;
+        border:none;
+        right:100%;
+        
+        
+        
+      }
+
+
+      .upButton:active{
+        background: url('img/lact.png') center no-repeat;
+        padding: 32px;
+        border:none;
+        
+        
+      }
+
       .tr-zone{
         background: -webkit-linear-gradient(bottom,  rgba(34, 34, 34,0.5), rgba(0, 0, 0,0.5));
         
@@ -173,4 +193,36 @@
      .dbutt{
 
       text-align: right;
+     }
+
+     .ref{
+
+
+      text-align: center;
+      
+      margin-top: 10%;
+      
+      
+/*
+      font-size: 30%;
+      width: 30%;
+      color:rgba(0, 0, 0, 0.7);
+      background-color: #158000; 
+      border-radius: 30px;
+      border:none;
+      padding:10px;
+
+      */
+
+     }
+
+     .ref button{
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 30px;
+      width:80%;
+      background-color: #158000; 
+      padding: 20px;
+      border: none; 
+      border-radius: 50px;
+
      }
