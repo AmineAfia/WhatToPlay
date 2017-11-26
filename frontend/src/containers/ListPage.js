@@ -92,13 +92,18 @@ class ListPage extends Component {
   //   );
   // }
 
-  upvoteSong = () => {
-    this.props.actions.upVoteSong();
+  // upvoteSong = () => {
+  //   this.props.actions.upVoteSong();
+  //   console.log('upvote');
+  // }
+
+  upvoteSong(songID) {
+    return this.props.actions.upVoteSong(this.getUrlHash(), songID);
     console.log('upvote');
   }
 
-  downvoteSong = () => {
-    this.props.actions.downvoteSong();
+  downvoteSong(songID){
+    return this.props.actions.downvoteSong(this.getUrlHash(), songID);
     console.log('downvote');
   }
 
@@ -110,31 +115,21 @@ class ListPage extends Component {
         // console.log(songslist[v]);
         songsArray.push(songslist[v]);
       }
-      return songsArray.map(function(song) {
-          return (
-          <div key={song.id}>
-            <ListItem index={song.title.toString()} />
-          </div>
-          );
-      });
+      if(songsArray.length > 0){
+        return songsArray.map(function(song) {
+            return (
+            <div key={song.id}>
+              <ListItem 
+                index={song.title.toString()}
+                // onUpvoteClick={this.upvoteSong(song.id)}
+                // onDownvoteClick={this.downvoteSong(song.id)}
+                />
+            </div>
+            );
+        });
+      }
+      return songsArray;
   }
-
-  // renderWidgetsUpdate() {
-  //     const songslist = this.props.updates.updates || [];
-  //     let v
-  //     let songsArray = []
-  //     for(v in songslist) {
-  //       // console.log(songslist[v]);
-  //       songsArray.push(songslist[v]);
-  //     }
-  //     return songsArray.map(function(song) {
-  //         return (
-  //         <div key={song.id}>
-  //           <ListItem index={song.title.toString()} />
-  //         </div>
-  //         );
-  //     });
-  // }
 
   refreshList = () => {
     this.props.actions.refreshList(this.getUrlHash());

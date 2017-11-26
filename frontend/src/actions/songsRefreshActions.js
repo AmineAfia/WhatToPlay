@@ -44,10 +44,9 @@ export function getSongs(roomID) {
   }
 }
 
-export function upVoteSong() {
+export function upVoteSong(roomID, songID) {
   return function(dispatch){
-
-    const request = axios.post('http://127.0.0.1:8080/api/v1/room/${roomID}/songs/{songID}/upvote?user=${userID}')
+    const request = axios.post('http://127.0.0.1:8080/api/v1/room/${roomID}/songs/{songID}/upvote?user=${sjdgfjd}')
     .then(function (response) {
       console.log('upvoted');
       dispatch({
@@ -57,10 +56,10 @@ export function upVoteSong() {
   }
 }
 
-export function downVoteSong() {
+export function downVoteSong(roomID, songID) {
   return function(dispatch){
 
-    const request = axios.post('http://127.0.0.1:8080/api/v1/room/${roomID}/songs/{songID}/downvote?user=${userID}')
+    const request = axios.post('http://127.0.0.1:8080/api/v1/room/${roomID}/songs/{songID}/downvote?user=${sjdgfjd}')
     .then(function (response) {
       console.log('downvoted');
       dispatch({

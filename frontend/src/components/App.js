@@ -7,6 +7,7 @@ import FuelSavingsPage from '../containers/FuelSavingsPage';
 import ListPage from '../containers/ListPage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
+import '../styles/hide-routes-div.css';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -20,7 +21,7 @@ class App extends React.Component {
     const activeStyle = { color: 'blue' };
     return (
       <div>
-        <div>
+        <div className="hide-class">
           <NavLink exact to="/" activeStyle={activeStyle}>Home</NavLink>
           {' | '}
           <NavLink to="/fuel-savings" activeStyle={activeStyle}>Demo App</NavLink>

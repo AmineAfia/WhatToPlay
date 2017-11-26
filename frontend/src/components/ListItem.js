@@ -18,8 +18,12 @@ function ListItem({index, onUpvoteClick, onDownvoteClick}) {
   );
 };
 
+const { func } = PropTypes;
+
 ListItem.propTypes = {
-  index: PropTypes.string.isRequired
+  index: PropTypes.string.isRequired,
+  // onUpvoteClick: func.isRequired,
+  // onDownvoteClick: func.isRequired
 };
 
 export default ListItem;
