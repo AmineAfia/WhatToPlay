@@ -92,6 +92,16 @@ class ListPage extends Component {
   //   );
   // }
 
+  upvoteSong = () => {
+    this.props.actions.upVoteSong();
+    console.log('upvote');
+  }
+
+  downvoteSong = () => {
+    this.props.actions.downvoteSong();
+    console.log('downvote');
+  }
+
   renderWidgets(songslist) {
       // const songslist = this.props.songs.songs || [];
       let v
@@ -129,10 +139,10 @@ class ListPage extends Component {
   refreshList = () => {
     this.props.actions.refreshList(this.getUrlHash());
     console.log('start refresch');
-    console.log(this.props.updates.songs);
+    // console.log(this.props.updates.songs);
     // console.log(this.props);
-    this.renderWidgets(this.props.updates.songs);
-    this.forceUpdate()
+    // this.renderWidgets(this.props.updates.songs);
+    // this.forceUpdate()
     console.log('end refresch');
   }
 
