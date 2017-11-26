@@ -102,14 +102,20 @@ func (r *Room) UpdatePlaylistSongs() {
 
 func (r *Room) CheckUpvotes() {
 
-	//badSongs := make(map[string]Song)
+	ids := []spotify.ID{}
 
 	for id, s := range r.Songs {
 		if s.CalculateVotes() < 0 {
 			//badSongs[id] = s
 			delete(r.Songs, id)
+			ids = append(ids, spotify.ID(id))
 		}
 	}
+
+	if len(ids) > 0 {
+		r.Client.RemoveTracksFromPlaylist(r.UserID, r.PlaylistID, ids...)
+	}
+
 	/*
 		for id, _ := range badSongs {
 			delete(r.Songs, id)
