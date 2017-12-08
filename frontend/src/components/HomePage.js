@@ -18,7 +18,7 @@ const HomePage = () => {
 
       */}
 
-      <div ><a href="http://localhost:8080/auth"><input type="submit" value="Host" className='sub'/></a></div>
+      <div ><input type="submit" value="Host" className='sub'/></div>
     </div>
   );
 };
