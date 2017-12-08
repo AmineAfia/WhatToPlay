@@ -3,3 +3,5 @@ export const CALCULATE_FUEL_SAVINGS = 'CALCULATE_FUEL_SAVINGS';
 export const GET_SONGS = 'GET_SONGS';
 export const GET_ROOMS = 'GET_ROOMS';
 export const GET_UPDATE = 'GET_UPDATE';
+export const UPVOTE_SONG = 'UPVOTE_SONG';
+export const DOWNVOTE_SONG = 'DOWNVOTE_SONG';

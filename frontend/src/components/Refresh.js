@@ -1,8 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import FuelSavingsResults from './FuelSavingsResults';
-import FuelSavingsTextInput from './FuelSavingsTextInput';
-import {fuelSavings} from '../types';
 
 function Refresh({onRefreshClick}) {
   return (

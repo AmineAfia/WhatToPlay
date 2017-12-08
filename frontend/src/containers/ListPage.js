@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {render} from 'react-dom';
-import ReactList from 'react-list';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/songsRefreshActions';
@@ -8,28 +6,28 @@ import '../styles/list-page.css';
 import ListItem from '../components/ListItem';
 import Refresh from '../components/Refresh';
 
-const renderItem = (index, key) =>
-  <div key={key} className={'item' + (index % 2 ? '' : ' even')}>
-    {index}
-  </div>;
-renderItem.toJSON = () => renderItem.toString();
+// const renderItem = (index, key) =>
+//   <div key={key} className={'item' + (index % 2 ? '' : ' even')}>
+//     {index}
+//   </div>;
+// renderItem.toJSON = () => renderItem.toString();
 
-const getHeight = index => 50; // + (10 * (index % 10));
-getHeight.toJSON = () => getHeight.toString();
+// const getHeight = index => 50; // + (10 * (index % 10));
+// getHeight.toJSON = () => getHeight.toString();
 
-const getWidth = index => 100 + (10 * (index % 10));
-getWidth.toJSON = () => getWidth.toString();
+// const getWidth = index => 100 + (10 * (index % 10));
+// getWidth.toJSON = () => getWidth.toString();
 
 
-const renderVariableHeightItem = (index, key) =>
-  <div
-    key={key}
-    className={'item' + (index % 2 ? '' : ' even')}
-    style={{lineHeight: `${getHeight(index)}px`}}
-  >
-    <ListItem index={index.toString()} />
-  </div>;
-renderVariableHeightItem.toJSON = () => renderVariableHeightItem.toString();
+// const renderVariableHeightItem = (index, key) =>
+//   <div
+//     key={key}
+//     className={'item' + (index % 2 ? '' : ' even')}
+//     style={{lineHeight: `${getHeight(index)}px`}}
+//   >
+//     <ListItem index={index.toString()} />
+//   </div>;
+// renderVariableHeightItem.toJSON = () => renderVariableHeightItem.toString();
 
 
 // renderSongsItem() {
@@ -48,40 +46,40 @@ renderVariableHeightItem.toJSON = () => renderVariableHeightItem.toString();
 // renderListItem.toJSON = () => renderListItem.toString();
 
 
-const examples = [
-  // {
-  //   length: 10,
-  //   itemRenderer: renderVariableHeightItem
-  // },
-  // {
-  //   length: 10,
-  //   itemRenderer: renderVariableHeightItem,
-  //   type: 'variable'
-  // },
-  // {
-  //   length: 10,
-  //   itemRenderer: renderVariableHeightItem,
-  //   itemSizeGetter: getHeight,
-  //   type: 'variable'
-  // },
-  {
-    length: 1000,
-    initialIndex: 10,
-    itemRenderer: renderVariableHeightItem,
-    itemSizeGetter: getHeight,
-    type: 'variable'
-  }
-];
+// const examples = [
+//   // {
+//   //   length: 10,
+//   //   itemRenderer: renderVariableHeightItem
+//   // },
+//   // {
+//   //   length: 10,
+//   //   itemRenderer: renderVariableHeightItem,
+//   //   type: 'variable'
+//   // },
+//   // {
+//   //   length: 10,
+//   //   itemRenderer: renderVariableHeightItem,
+//   //   itemSizeGetter: getHeight,
+//   //   type: 'variable'
+//   // },
+//   {
+//     length: 1000,
+//     initialIndex: 10,
+//     itemRenderer: renderVariableHeightItem,
+//     itemSizeGetter: getHeight,
+//     type: 'variable'
+//   }
+// ];
 
 class ListPage extends Component {
 
   componentWillMount () {
     this.props.actions.getSongs(this.getUrlHash());
-  };
+  }
 
   getUrlHash() {
     return this.props.location.pathname.split('/room/')[1];
-  };
+  }
 
   // renderExamples() {
   //   return examples.map((props, key) =>
@@ -98,13 +96,13 @@ class ListPage extends Component {
   // }
 
   upvoteSong(songID) {
-    return this.props.actions.upVoteSong(this.getUrlHash(), songID);
     console.log('upvote');
+    return this.props.actions.upVoteSong(this.getUrlHash(), songID);
   }
 
   downvoteSong(songID){
-    return this.props.actions.downvoteSong(this.getUrlHash(), songID);
     console.log('downvote');
+    return this.props.actions.downvoteSong(this.getUrlHash(), songID);
   }
 
   renderWidgets(songslist) {
@@ -145,7 +143,7 @@ class ListPage extends Component {
     return (
       <div className='example'>
         <div className='header'>Songs list</div>
-        <div className='component'>{this.renderWidgets(this.props.songs.songs)}</div>
+        <div className='component'>{this.renderWidgets(this.props.songs || [])}</div>
         <div className='ref' ><Refresh className='refb' onRefreshClick={this.refreshList} /></div>
       </div>
     );

@@ -1,5 +1,4 @@
-import {GET_SONGS, GET_UPDATE, GET_ROOMS} from '../constants/actionTypes';
-import {necessaryDataIsProvidedToCalculateSavings, calculateSavings} from '../utils/fuelSavings';
+import {GET_SONGS, GET_UPDATE} from '../constants/actionTypes';
 import objectAssign from 'object-assign';
 import initialState from './initialState';
 
@@ -14,11 +13,11 @@ export default function songsReducer(state = initialState.songs, action) {
 
     case GET_SONGS:
         // console.log(action.payload.data.songs);
-        return objectAssign({}, state, {songs: action.payload.data});
+        return objectAssign({}, state, {songs: action.payload.data.songs});
 
     case GET_UPDATE:
         // console.log(action.payload.data.songs);
-        return objectAssign({}, state, {songs: action.payload.data});
+        return objectAssign({}, state, {songs: action.payload.data.songs});
 
     default:
         return state;

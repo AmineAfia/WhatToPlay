@@ -16,9 +16,7 @@ function ListItem({index, onUpvoteClick, onDownvoteClick}) {
       </tbody>
     </table>
   );
-};
-
-const { func } = PropTypes;
+}
 
 ListItem.propTypes = {
   index: PropTypes.string.isRequired,

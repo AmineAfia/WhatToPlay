@@ -12,6 +12,7 @@ import '../styles/hide-routes-div.css';
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
 // component at the top-level.
+// className="hide-class"
 
 class App extends React.Component {
 
@@ -21,7 +22,7 @@ class App extends React.Component {
     const activeStyle = { color: 'blue' };
     return (
       <div>
-        <div className="hide-class">
+        <div>
           <NavLink exact to="/" activeStyle={activeStyle}>Home</NavLink>
           {' | '}
           <NavLink to="/fuel-savings" activeStyle={activeStyle}>Demo App</NavLink>

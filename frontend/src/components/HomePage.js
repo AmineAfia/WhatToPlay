@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import '../styles/list-page.css';
 
 const HomePage = () => {
@@ -18,7 +18,7 @@ const HomePage = () => {
 
       */}
 
-      <div ><input type="submit" value="Host" className='sub'/></div>
+      <div ><a href="http://localhost:8080/auth"><input type="submit" value="Host" className='sub'/></a></div>
     </div>
   );
 };
