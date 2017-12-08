@@ -24,6 +24,8 @@ func Run(address string) {
 		ValidateHeaders: false,
 	}))
 
+	router.StaticFS("front/", http.Dir("front/public_html"))
+
 	api := router.Group("/api")
 	v1 := api.Group("/v1")
 

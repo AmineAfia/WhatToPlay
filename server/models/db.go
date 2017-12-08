@@ -16,7 +16,7 @@ func (db DB) GetOrCreateRoom(id string) *Room {
 	}
 	db.Rooms[id] = &Room{Name: id, Songs: make(map[string]Song), RenewTreshold: 15}
 
-	qrcode.CreateQr(config.Conf.AppUrl, id)
+	qrcode.CreateQr(config.Conf.BaseUrl, id)
 
 	return db.Rooms[id]
 }
