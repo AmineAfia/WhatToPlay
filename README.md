@@ -1,7 +1,8 @@
 # WhatToPlay
 scan QR code and controle the music in your friends parties, democraticaly ;)
 
-Link: https://whattoplay-jhbsaysixf.now.sh
+Link: https://whattoplay-kpwfvcmpbv.now.sh
+
 clone the repo and do the following:
 ## Backend
 - Point your workspace the to cloned repo
